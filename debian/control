@@ -1,0 +1,19 @@
+Source: argus-pdp-pep-common
+Section: java
+Priority: optional
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Dennis van Dok (Software Engineer) <dennisvd@nikhef.nl>
+Build-Depends: debhelper (>= 7), cdbs, default-jdk, maven-debian-helper (>= 1.4)
+Build-Depends-Indep: argus-parent-maven, libjetty-java, liblogback-java, libslf4j-java 
+Standards-Version: 3.9.1
+Vcs-Svn: svn://svn.debian.org/svn/pkg-java/trunk/argus-pdp-pep-common
+Vcs-Browser: http://svn.debian.org/wsvn/pkg-java/trunk/argus-pdp-pep-common
+Homepage: http://glite.web.cern.ch/glite/ 
+
+Package: libargus-pdp-pep-common-java
+Architecture: all
+Depends: ${misc:Depends}, ${maven:Depends}
+Recommends: ${maven:OptionalDepends}
+Description: Argus PDP and PEP server common library
+ XACML based authorization service developed within the gLite project.
+

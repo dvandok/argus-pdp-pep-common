@@ -1,0 +1,20 @@
+Format: http://dep.debian.net/deps/dep5/
+Upstream-Name: Argus PDP and PEP server common library
+Upstream-Contact:  Valery Tschopp as developer, documentation 
+             Chad La Joie as developer, documentation 
+             Joni Hahkala as developer 
+Source: http://glite.web.cern.ch/glite/
+
+Files: *
+Copyright: 2008-2012, EGEE Collaboration
+License: Apache-2.0
+
+Files: debian/*
+Copyright: 2012, Dennis van Dok (Software Engineer) <dennisvd@nikhef.nl>
+License: Apache-2.0
+
+License: Apache-2.0
+  On Debian GNU/Linux system you can find the complete text of the
+  Apache-2.0 license in '/usr/share/common-licenses/Apache-2.0'
+
+
