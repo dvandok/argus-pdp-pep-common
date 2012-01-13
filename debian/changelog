@@ -3,4 +3,4 @@ argus-pdp-pep-common (1.2.2-1) UNRELEASED; urgency=low
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your
     ITP>
 
- -- Dennis van Dok (Software Engineer) <dennisvd@nikhef.nl>  Wed, 11 Jan 2012 14:55:57 +0100
+ -- Dennis van Dok (Software Engineer) <dennisvd@nikhef.nl>  Fri, 13 Jan 2012 01:53:50 +0100

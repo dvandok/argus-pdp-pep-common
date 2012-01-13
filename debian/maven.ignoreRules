@@ -17,11 +17,9 @@
 com.mycila.maven-license-plugin maven-license-plugin * * * *
 emi trustmanager * * * *
 junit junit * * * *
-net.jcip jcip-annotations * * * *
 net.sourceforge ini4j * * * *
 org.apache.maven.plugins maven-javadoc-plugin * * * *
 org.apache.maven.plugins maven-jxr-plugin * * * *
 org.apache.maven.plugins maven-source-plugin * * * *
 org.apache.maven.plugins maven-surefire-report-plugin * * * *
 org.glite.voms voms-api-java * * * *
-org.opensaml opensaml * * * *
