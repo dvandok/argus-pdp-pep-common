@@ -11,7 +11,7 @@ Vcs-Svn: svn://svn.debian.org/svn/pkg-java/trunk/argus-pdp-pep-common
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-java/trunk/argus-pdp-pep-common
 Homepage: http://glite.web.cern.ch/glite/ 
 
-Package: libargus-pdp-pep-common-java
+Package: libpdp-pep-common-java
 Architecture: all
 Depends: ${misc:Depends}, ${maven:Depends}
 Recommends: ${maven:OptionalDepends}
