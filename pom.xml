@@ -6,14 +6,14 @@
     <parent>
         <groupId>org.glite.authz</groupId>
         <artifactId>argus-parent</artifactId>
-        <version>1.4</version>
+        <version>1.5</version>
         <relativePath>../emi.argus.parent</relativePath>
     </parent>
 
     <name>Argus PDP and PEP server common library</name>
     <groupId>org.glite.authz</groupId>
     <artifactId>pdp-pep-common</artifactId>
-    <version>1.2.2</version>
+    <version>1.3.0</version>
     <packaging>jar</packaging>
 
     <description>XACML based authorization service developed within the gLite project.</description>
@@ -262,8 +262,8 @@
     </licenses>
 
     <organization>
-        <name>EGEE Collaboration</name>
-        <url>http://www.eu-egee.org/</url>
+        <name>EMI - European Middleware Initiative</name>
+        <url>http://www.eu-emi.eu/</url>
     </organization>
 
     <profiles>
