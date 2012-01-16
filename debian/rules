@@ -6,5 +6,6 @@ include /usr/share/cdbs/1/class/maven.mk
 
 JAVA_HOME := /usr/lib/jvm/default-java
 
+export CLASSPATH=/usr/share/java/opensaml.jar:/usr/share/java/slf4j-api.jar
 get-orig-source:
 	uscan --download-version $(DEB_UPSTREAM_VERSION) --force-download --rename
