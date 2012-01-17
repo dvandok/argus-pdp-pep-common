@@ -7,7 +7,7 @@ include /usr/share/cdbs/1/class/maven.mk
 JAVA_HOME := /usr/lib/jvm/default-java
 
 # javahelper will translate this to the MANIFEST.MF Class-Path
-export CLASSPATH=/usr/share/java/opensaml.jar:/usr/share/java/openws.jar:/usr/share/java/slf4j-api.jar
+export CLASSPATH=/usr/share/java/opensaml.jar:/usr/share/java/openws.jar:/usr/share/java/slf4j-api.jar:/usr/share/java/xmltooling.jar
 
 get-orig-source:
 	uscan --download-version $(DEB_UPSTREAM_VERSION) --force-download --rename
