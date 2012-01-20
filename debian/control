@@ -3,18 +3,34 @@ Section: java
 Priority: optional
 Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
 Uploaders: Dennis van Dok (Software Engineer) <dennisvd@nikhef.nl>
-Build-Depends: debhelper (>= 7), cdbs, default-jdk, maven-debian-helper (>= 1.4)
-Build-Depends-Indep: argus-parent-maven, libjcip-annotations-java (>= 1.0), libjetty-java, liblogback-java,  
- libopensaml-java, libopenws-java, libxmltooling-java, libslf4j-java, libvomsjapi-java
+Build-Depends: debhelper (>= 7), cdbs, default-jdk,
+ maven-debian-helper (>= 1.4), javahelper
+Build-Depends-Indep: argus-parent-maven, libjcip-annotations-java (>= 1.0),
+ libjetty-java, liblogback-java, libopensaml-java, libopenws-java,
+ libxmltooling-java, libslf4j-java, libvomsjapi-java
 Standards-Version: 3.9.2
-Vcs-Svn: svn://svn.debian.org/svn/pkg-java/trunk/argus-pdp-pep-common
-Vcs-Browser: http://svn.debian.org/wsvn/pkg-java/trunk/argus-pdp-pep-common
-Homepage: http://glite.web.cern.ch/glite/ 
+Homepage: https://twiki.cern.ch/twiki/bin/view/EGEE/AuthorizationFramework
 
 Package: libpdp-pep-common-java
 Architecture: all
 Depends: ${misc:Depends}, ${maven:Depends}
 Recommends: ${maven:OptionalDepends}
-Description: Argus PDP and PEP server common library
- XACML based authorization service developed within the gLite project.
+Description: Argus PDP and PEP server common Java library
+ ARGUS is a modular XACML based authorization service. It consists of several
+ components, such as policy decision points and policy enforcement points.
+ This library contains a collection of common functionality found in the PDP
+ and PEP server.
+
+Package: libpdp-pep-common-java-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}, ${maven:DocDepends}
+Recommends: ${java:Recommends}
+Description: Argus PDP and PEP server common Java library, Javadoc API
+ ARGUS is a modular XACML based authorization service. It consists of several
+ components, such as policy decision points and policy enforcement points.
+ This library contains a collection of common functionality found in the PDP
+ and PEP server.
+ .
+ This package contains the Javadoc API.
 
