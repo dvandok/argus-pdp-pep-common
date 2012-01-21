@@ -7,7 +7,10 @@ Build-Depends: debhelper (>= 7), cdbs, default-jdk,
  maven-debian-helper (>= 1.4), javahelper, quilt
 Build-Depends-Indep: libjcip-annotations-java (>= 1.0),
  libjetty-java, liblogback-java, libopensaml-java, libopenws-java,
- libxmltooling-java, libslf4j-java, libvomsjapi-java, libmaven-javadoc-plugin-java
+ libxmltooling-java, libslf4j-java, libvomsjapi-java,
+ libmaven-javadoc-plugin-java, libini4j-java, libjetty-java,
+ libtrustmanager-java, libjcip-annotations-java,
+ libvomsjapi-java
 Standards-Version: 3.9.2
 Homepage: https://twiki.cern.ch/twiki/bin/view/EGEE/AuthorizationFramework
 
