@@ -1,0 +1,10 @@
+Document: libpdp-pep-common-java-doc
+Title: pdp-pep-commonJavadoc API
+Author: Members of the EGEE collaboration
+Abstract: This is the API documentation for the Argus pdp-pep-common
+ library as generated with Javadoc from the sources.
+Section: Programming/Java
+
+Format: HTML
+Index: /usr/share/doc/libpdp-pep-common-java/api/index.html
+Files: /usr/share/doc/libpdp-pep-common-java/api/*
