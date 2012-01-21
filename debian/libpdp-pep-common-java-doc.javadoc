@@ -1,1 +1,1 @@
-target/apidoc /usr/share/doc/libpdp-pep-common-java/api
+target/site/apidocs /usr/share/doc/libpdp-pep-common-java/api
