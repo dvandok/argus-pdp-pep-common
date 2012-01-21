@@ -1,0 +1,13 @@
+Description: Reset the relative path of the parent to something kept in the debian tree
+Author: Dennis van Dok <dennisvd@nikhef.nl>
+--- a/pom.xml
++++ b/pom.xml
+@@ -7,7 +7,7 @@
+         <groupId>org.glite.authz</groupId>
+         <artifactId>argus-parent</artifactId>
+         <version>1.5</version>
+-        <relativePath>../emi.argus.parent</relativePath>
++        <relativePath>debian/parent</relativePath>
+     </parent>
+ 
+     <name>Argus PDP and PEP server common library</name>
