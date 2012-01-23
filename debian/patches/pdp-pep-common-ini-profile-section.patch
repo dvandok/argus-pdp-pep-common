@@ -1,0 +1,46 @@
+Description: See if this works
+Author: Dennis van Dok
+--- a/src/main/java/org/glite/authz/common/config/AbstractIniConfigurationParser.java
++++ b/src/main/java/org/glite/authz/common/config/AbstractIniConfigurationParser.java
+@@ -28,7 +28,7 @@
+ import org.glite.security.trustmanager.UpdatingKeyManager;
+ import org.glite.security.util.CaseInsensitiveProperties;
+ import org.glite.voms.PKIStore;
+-import org.ini4j.Ini.Section;
++import org.ini4j.Ini.Profile.Section;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+--- a/src/main/java/org/glite/authz/common/config/AbstractIniServiceConfigurationParser.java
++++ b/src/main/java/org/glite/authz/common/config/AbstractIniServiceConfigurationParser.java
+@@ -23,7 +23,7 @@
+ import org.glite.voms.PKIStore;
+ 
+ import org.ini4j.Ini;
+-import org.ini4j.Ini.Section;
++import org.ini4j.Ini.Profile.Section;
+ import org.opensaml.ws.soap.client.http.HttpClientBuilder;
+ import org.opensaml.ws.soap.client.http.TLSProtocolSocketFactory;
+ import org.slf4j.Logger;
+--- a/src/main/java/org/glite/authz/common/config/IniConfigUtil.java
++++ b/src/main/java/org/glite/authz/common/config/IniConfigUtil.java
+@@ -21,7 +21,7 @@
+ import java.util.List;
+ 
+ import org.glite.authz.common.util.Strings;
+-import org.ini4j.Ini.Section;
++import org.ini4j.Ini.Profile.Section;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+--- a/src/main/java/org/glite/authz/common/config/IniSectionConfigurationParser.java
++++ b/src/main/java/org/glite/authz/common/config/IniSectionConfigurationParser.java
+@@ -17,7 +17,7 @@
+ 
+ package org.glite.authz.common.config;
+ 
+-import org.ini4j.Ini.Section;
++import org.ini4j.Ini.Profile.Section;
+ 
+ /** A generic parser that parses an INI {@link Section} and creates an ObjectType. */
+ public interface IniSectionConfigurationParser<ObjectType> {
