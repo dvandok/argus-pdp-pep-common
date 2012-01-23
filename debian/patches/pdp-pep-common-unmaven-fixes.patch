@@ -1,0 +1,37 @@
+Description: Set dependencies on packages not in maven repo style to 'system'
+ The dependencies on ini4j, voms-api and jcip-annotations are changed
+ to type 'system', which is an ugly workaround to use a jar file
+ not in Debian's local maven repository. When these packages eventually
+ package according to the maven repo specification, these hacks can go.
+ See Bug#656312 (voms-api), Bug#656316 (jcip-annotations), Bug#656368 (ini4j).
+Author: Dennis van Dok <dennisvd@nikhef.nl>
+--- a/pom.xml
++++ b/pom.xml
+@@ -55,6 +55,8 @@
+         <dependency>
+             <groupId>net.sourceforge</groupId>
+             <artifactId>ini4j</artifactId>
++	    <scope>system</scope>
++	    <systemPath>/usr/share/java/ini4j.jar</systemPath>
+         </dependency>
+         <dependency>
+             <groupId>emi</groupId>
+@@ -63,6 +65,8 @@
+         <dependency>
+             <groupId>org.glite.voms</groupId>
+             <artifactId>voms-api-java</artifactId>
++	    <scope>system</scope>
++	    <systemPath>/usr/share/java/voms-api-java.jar</systemPath>
+         </dependency>
+         <!-- Provided Dependencies -->
+         <dependency>
+@@ -78,7 +82,8 @@
+         <dependency>
+             <groupId>net.jcip</groupId>
+             <artifactId>jcip-annotations</artifactId>
+-            <scope>provided</scope>
++	    <scope>system</scope>
++	    <systemPath>/usr/share/java/jcip-annotations.jar</systemPath>
+         </dependency>
+         <dependency>
+             <groupId>ch.qos.logback</groupId>
