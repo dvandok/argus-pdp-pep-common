@@ -7,21 +7,191 @@ Author: Dennis van Dok
  import org.glite.security.util.CaseInsensitiveProperties;
  import org.glite.voms.PKIStore;
 -import org.ini4j.Ini.Section;
-+import org.ini4j.Ini.Profile.Section;
++import org.ini4j.Ini;
  import org.slf4j.Logger;
  import org.slf4j.LoggerFactory;
  
+@@ -94,7 +94,7 @@
+      * 
+      * @return the value
+      */
+-    protected int getConnectionTimeout(Section configSection) {
++    protected int getConnectionTimeout(Ini configSection) {
+         int timeout = IniConfigUtil
+                 .getInt(configSection, CONN_TIMEOUT_PROP, DEFAULT_CONN_TIMEOUT, 1, Integer.MAX_VALUE);
+         return timeout * 1000;
+@@ -108,7 +108,7 @@
+      * 
+      * @return the value
+      */
+-    protected int getMaximumRequests(Section configSection) {
++    protected int getMaximumRequests(Ini configSection) {
+         return IniConfigUtil.getInt(configSection, MAX_REQUESTS_PROP, DEFAULT_MAX_REQS, 1, Integer.MAX_VALUE);
+     }
+ 
+@@ -120,7 +120,7 @@
+      * 
+      * @return the value
+      */
+-    protected int getReceiveBufferSize(Section configSection) {
++    protected int getReceiveBufferSize(Ini configSection) {
+         return IniConfigUtil.getInt(configSection, REC_BUFF_SIZE_PROP, DEFAULT_REC_BUFF_SIZE, 1, Integer.MAX_VALUE);
+     }
+ 
+@@ -132,7 +132,7 @@
+      * 
+      * @return the value
+      */
+-    protected int getSendBufferSize(Section configSection) {
++    protected int getSendBufferSize(Ini configSection) {
+         return IniConfigUtil.getInt(configSection, SEND_BUFF_SIZE_PROP, DEFAULT_SEND_BUFF_SIZE, 1, Integer.MAX_VALUE);
+     }
+ 
+@@ -144,7 +144,7 @@
+      * 
+      * @return the value
+      */
+-    protected int getTrustMaterialRefreshInterval(Section configSection) {
++    protected int getTrustMaterialRefreshInterval(Ini configSection) {
+         return IniConfigUtil.getInt(configSection, TRUST_INFO_REFRSH_PROP, DEFAULT_TRUST_INFO_REFRESH, 1,
+                 Integer.MAX_VALUE);
+     }
+@@ -159,7 +159,7 @@
+      * 
+      * @throws ConfigurationException thrown if there is a problem creating the key manager
+      */
+-    protected X509KeyManager getX509KeyManager(Section configSection) throws ConfigurationException {
++    protected X509KeyManager getX509KeyManager(Ini configSection) throws ConfigurationException {
+         if (configSection == null) {
+             return null;
+         }
+@@ -200,7 +200,7 @@
+      * 
+      * @throws ConfigurationException thrown if there is a problem creating the trust manager
+      */
+-    protected PKIStore getX509TrustMaterialStore(Section configSection) throws ConfigurationException {
++    protected PKIStore getX509TrustMaterialStore(Ini configSection) throws ConfigurationException {
+         if (configSection == null) {
+             return null;
+         }
 --- a/src/main/java/org/glite/authz/common/config/AbstractIniServiceConfigurationParser.java
 +++ b/src/main/java/org/glite/authz/common/config/AbstractIniServiceConfigurationParser.java
-@@ -23,7 +23,7 @@
+@@ -23,7 +23,6 @@
  import org.glite.voms.PKIStore;
  
  import org.ini4j.Ini;
 -import org.ini4j.Ini.Section;
-+import org.ini4j.Ini.Profile.Section;
  import org.opensaml.ws.soap.client.http.HttpClientBuilder;
  import org.opensaml.ws.soap.client.http.TLSProtocolSocketFactory;
  import org.slf4j.Logger;
+@@ -91,7 +90,7 @@
+      * 
+      * @throws ConfigurationException thrown if the entity ID property is not set or has an empty value
+      */
+-    protected String getEntityId(Section configSection) throws ConfigurationException {
++    protected String getEntityId(Ini configSection) throws ConfigurationException {
+         return IniConfigUtil.getString(configSection, ENTITY_ID_PROP);
+     }
+ 
+@@ -105,7 +104,7 @@
+      * 
+      * @throws ConfigurationException thrown if no host name is given
+      */
+-    protected String getHostname(Section configSection) throws ConfigurationException {
++    protected String getHostname(Ini configSection) throws ConfigurationException {
+         return IniConfigUtil.getString(configSection, HOST_PROP);
+     }
+ 
+@@ -116,7 +115,7 @@
+      * 
+      * @return the value, or 0 if it is not set
+      */
+-    protected int getPort(Section configSection) {
++    protected int getPort(Ini configSection) {
+         return IniConfigUtil.getInt(configSection, PORT_PROP, 0, 1, 65535);
+     }
+ 
+@@ -127,7 +126,7 @@
+      * 
+      * @return whether SSL should be enabled on the service port, defaults to {@value #DEFAULT_SSL_ON_PROP}.
+      */
+-    protected boolean isSSLEnabled(Section configSection) {
++    protected boolean isSSLEnabled(Ini configSection) {
+         if (configSection == null)
+             return DEFAULT_SSL_ON_PROP;
+         if (configSection.containsKey(SERVICE_KEY_PROP) && configSection.containsKey(SERVICE_CERT_PROP)
+@@ -146,7 +145,7 @@
+      * @return whether client certificate authentication is required when a client is connecting, defaults to
+      *         {@value #DEFAULT_CLIENT_CERT_AUTH}.
+      */
+-    protected boolean isClientCertAuthRequired(Section configSection) {
++    protected boolean isClientCertAuthRequired(Ini configSection) {
+         if (configSection == null)
+             return DEFAULT_CLIENT_CERT_AUTH;
+         if (isSSLEnabled(configSection)) {
+@@ -163,7 +162,7 @@
+      * 
+      * @return the admin host value, or the default admin host {@value #DEFAULT_ADMIN_HOST} if it is not set
+      */
+-    protected String getAdminHost(Section configSection) {
++    protected String getAdminHost(Ini configSection) {
+         return IniConfigUtil.getString(configSection, ADMIN_HOST_PROP, DEFAULT_ADMIN_HOST);
+     }
+ 
+@@ -174,7 +173,7 @@
+      * 
+      * @return the value, or 0 if is not set
+      */
+-    protected int getAdminPort(Section configSection) {
++    protected int getAdminPort(Ini configSection) {
+         return IniConfigUtil.getInt(configSection, ADMIN_PORT_PROP, 0, 1, 65535);
+     }
+ 
+@@ -185,7 +184,7 @@
+      * 
+      * @return the value or null if it is not set
+      */
+-    protected String getAdminPassword(Section configSection) {
++    protected String getAdminPassword(Ini configSection) {
+         return IniConfigUtil.getString(configSection, ADMIN_PASSWORD_PROP, null);
+     }
+ 
+@@ -197,7 +196,7 @@
+      * 
+      * @return the value
+      */
+-    protected int getMaxRequestQueueSize(Section configSection) {
++    protected int getMaxRequestQueueSize(Ini configSection) {
+         return IniConfigUtil.getInt(configSection, REQUEST_QUEUE_PROP, DEFAULT_REQUEST_QUEUE, 1, Integer.MAX_VALUE);
+     }
+ 
+@@ -212,7 +211,7 @@
+      */
+     protected void processServiceSection(Ini iniFile, AbstractServiceConfigurationBuilder<?> configBuilder)
+             throws ConfigurationException {
+-        Section configSection = iniFile.get(SERVICE_SECTION_HEADER);
++        Ini configSection = iniFile.get(SERVICE_SECTION_HEADER);
+         if (configSection == null) {
+             String errorMsg = "INI configuration does not contain the required '" + SERVICE_SECTION_HEADER
+                     + "' INI section";
+@@ -279,7 +278,7 @@
+      */
+     protected void processSecuritySection(Ini iniFile, AbstractServiceConfigurationBuilder<?> configBuilder)
+             throws ConfigurationException {
+-        Section securityConfig = iniFile.get(SECURITY_SECTION_HEADER);
++        Ini securityConfig = iniFile.get(SECURITY_SECTION_HEADER);
+         if (securityConfig==null) {
+             log.warn("INI configuration does not contain the '{}' section", SECURITY_SECTION_HEADER);
+         }
+@@ -308,7 +307,7 @@
+      * 
+      * @return the constructed SOAP client
+      */
+-    protected HttpClientBuilder buildSOAPClientBuilder(Section configSection, X509KeyManager keyManager,
++    protected HttpClientBuilder buildSOAPClientBuilder(Ini configSection, X509KeyManager keyManager,
+             X509TrustManager trustManager) {
+         HttpClientBuilder httpClientBuilder = new HttpClientBuilder();
+         httpClientBuilder.setContentCharSet("UTF-8");
 --- a/src/main/java/org/glite/authz/common/config/IniConfigUtil.java
 +++ b/src/main/java/org/glite/authz/common/config/IniConfigUtil.java
 @@ -21,7 +21,7 @@
@@ -29,10 +199,91 @@ Author: Dennis van Dok
  
  import org.glite.authz.common.util.Strings;
 -import org.ini4j.Ini.Section;
-+import org.ini4j.Ini.Profile.Section;
++import org.ini4j.Ini;
  import org.slf4j.Logger;
  import org.slf4j.LoggerFactory;
  
+@@ -42,7 +42,7 @@
+      * 
+      * @return the value
+      */
+-    public static boolean getBoolean(Section configSection, String propName, boolean defaultValue) {
++    public static boolean getBoolean(Ini configSection, String propName, boolean defaultValue) {
+         String value = getString(configSection, propName, null);
+ 
+         if ("true".equalsIgnoreCase(value) || "yes".equalsIgnoreCase(value) || "1".equalsIgnoreCase(value)) {
+@@ -69,7 +69,7 @@
+      * @throws ConfigurationException thrown if given configuration section does not contain a property with the given
+      *             name
+      */
+-    public static boolean getBoolean(Section configSection, String propName) throws ConfigurationException {
++    public static boolean getBoolean(Ini configSection, String propName) throws ConfigurationException {
+         String value = getString(configSection, propName, null);
+ 
+         if ("true".equalsIgnoreCase(value) || "yes".equalsIgnoreCase(value) || "1".equalsIgnoreCase(value)) {
+@@ -94,7 +94,7 @@
+      * 
+      * @return the value of the property
+      */
+-    public static String getString(Section configSection, String propName, String defaultValue) {
++    public static String getString(Ini configSection, String propName, String defaultValue) {
+         String propValue = Strings.safeTrimOrNullString(configSection.get(propName));
+ 
+         if (propValue == null) {
+@@ -114,7 +114,7 @@
+      * 
+      * @throws ConfigurationException thrown if the value does not exist or has a null/empty value
+      */
+-    public static String getString(Section configSection, String propName) throws ConfigurationException {
++    public static String getString(Ini configSection, String propName) throws ConfigurationException {
+         String propValue = Strings.safeTrimOrNullString(configSection.get(propName));
+ 
+         if (propValue != null) {
+@@ -137,7 +137,7 @@
+      * 
+      * @throws ConfigurationException thrown if there is a problem getting the required integer value
+      */
+-    public static int getInt(Section configSection, String propName, int minValue, int maxValue)
++    public static int getInt(Ini configSection, String propName, int minValue, int maxValue)
+             throws ConfigurationException {
+         if (configSection.containsKey(propName)) {
+             try {
+@@ -170,7 +170,7 @@
+      * 
+      * @return the value for the property
+      */
+-    public static int getInt(Section configSection, String propName, int defaultValue, int minValue, int maxValue) {
++    public static int getInt(Ini configSection, String propName, int defaultValue, int minValue, int maxValue) {
+         String strValue = Strings.safeTrimOrNullString(configSection.get(propName));
+         if (strValue != null) {
+             try {
+@@ -206,7 +206,7 @@
+      * 
+      * @throws ConfigurationException thrown if the configuration property does not exist.
+      */
+-    public static String[] getStringsArray(Section configSection, String propName) throws ConfigurationException {
++    public static String[] getStringsArray(Ini configSection, String propName) throws ConfigurationException {
+         return getStringsArray(configSection, propName, STRING_LIST_SEPARATOR);
+     }
+ 
+@@ -219,7 +219,7 @@
+      * @param defaultValues the default list values to return if the configuration property does not exist.
+      * @return the string values array of the property
+      */
+-    public static String[] getStringsArray(Section configSection, String propName, String[] defaultValues) {
++    public static String[] getStringsArray(Ini configSection, String propName, String[] defaultValues) {
+         String[] values = null;
+         try {
+             values = getStringsArray(configSection, propName, STRING_LIST_SEPARATOR);
+@@ -229,7 +229,7 @@
+         return values;
+     }
+ 
+-    private static String[] getStringsArray(Section configSection, String propName, String listSeparator)
++    private static String[] getStringsArray(Ini configSection, String propName, String listSeparator)
+             throws ConfigurationException {
+         String propValues = configSection.get(propName);
+         if (propValues == null) {
 --- a/src/main/java/org/glite/authz/common/config/IniSectionConfigurationParser.java
 +++ b/src/main/java/org/glite/authz/common/config/IniSectionConfigurationParser.java
 @@ -17,7 +17,7 @@
@@ -40,7 +291,17 @@ Author: Dennis van Dok
  package org.glite.authz.common.config;
  
 -import org.ini4j.Ini.Section;
-+import org.ini4j.Ini.Profile.Section;
++import org.ini4j.Ini;
  
  /** A generic parser that parses an INI {@link Section} and creates an ObjectType. */
  public interface IniSectionConfigurationParser<ObjectType> {
+@@ -43,7 +43,7 @@
+      *             thrown if there is a problem creating the obligation handler
+      *             from the given information
+      */
+-    public ObjectType parse(Section iniConfig,
++    public ObjectType parse(Ini iniConfig,
+             AbstractConfigurationBuilder<?> configBuilder)
+             throws ConfigurationException;
+ }
+\ No newline at end of file
