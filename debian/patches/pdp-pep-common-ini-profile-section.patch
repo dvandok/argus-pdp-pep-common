@@ -16,7 +16,7 @@ Author: Dennis van Dok
       * @return the value
       */
 -    protected int getConnectionTimeout(Section configSection) {
-+    protected int getConnectionTimeout(Ini configSection) {
++    protected int getConnectionTimeout(Ini.Section configSection) {
          int timeout = IniConfigUtil
                  .getInt(configSection, CONN_TIMEOUT_PROP, DEFAULT_CONN_TIMEOUT, 1, Integer.MAX_VALUE);
          return timeout * 1000;
@@ -25,7 +25,7 @@ Author: Dennis van Dok
       * @return the value
       */
 -    protected int getMaximumRequests(Section configSection) {
-+    protected int getMaximumRequests(Ini configSection) {
++    protected int getMaximumRequests(Ini.Section configSection) {
          return IniConfigUtil.getInt(configSection, MAX_REQUESTS_PROP, DEFAULT_MAX_REQS, 1, Integer.MAX_VALUE);
      }
  
@@ -34,7 +34,7 @@ Author: Dennis van Dok
       * @return the value
       */
 -    protected int getReceiveBufferSize(Section configSection) {
-+    protected int getReceiveBufferSize(Ini configSection) {
++    protected int getReceiveBufferSize(Ini.Section configSection) {
          return IniConfigUtil.getInt(configSection, REC_BUFF_SIZE_PROP, DEFAULT_REC_BUFF_SIZE, 1, Integer.MAX_VALUE);
      }
  
@@ -43,7 +43,7 @@ Author: Dennis van Dok
       * @return the value
       */
 -    protected int getSendBufferSize(Section configSection) {
-+    protected int getSendBufferSize(Ini configSection) {
++    protected int getSendBufferSize(Ini.Section configSection) {
          return IniConfigUtil.getInt(configSection, SEND_BUFF_SIZE_PROP, DEFAULT_SEND_BUFF_SIZE, 1, Integer.MAX_VALUE);
      }
  
@@ -52,7 +52,7 @@ Author: Dennis van Dok
       * @return the value
       */
 -    protected int getTrustMaterialRefreshInterval(Section configSection) {
-+    protected int getTrustMaterialRefreshInterval(Ini configSection) {
++    protected int getTrustMaterialRefreshInterval(Ini.Section configSection) {
          return IniConfigUtil.getInt(configSection, TRUST_INFO_REFRSH_PROP, DEFAULT_TRUST_INFO_REFRESH, 1,
                  Integer.MAX_VALUE);
      }
@@ -61,7 +61,7 @@ Author: Dennis van Dok
       * @throws ConfigurationException thrown if there is a problem creating the key manager
       */
 -    protected X509KeyManager getX509KeyManager(Section configSection) throws ConfigurationException {
-+    protected X509KeyManager getX509KeyManager(Ini configSection) throws ConfigurationException {
++    protected X509KeyManager getX509KeyManager(Ini.Section configSection) throws ConfigurationException {
          if (configSection == null) {
              return null;
          }
@@ -70,7 +70,7 @@ Author: Dennis van Dok
       * @throws ConfigurationException thrown if there is a problem creating the trust manager
       */
 -    protected PKIStore getX509TrustMaterialStore(Section configSection) throws ConfigurationException {
-+    protected PKIStore getX509TrustMaterialStore(Ini configSection) throws ConfigurationException {
++    protected PKIStore getX509TrustMaterialStore(Ini.Section configSection) throws ConfigurationException {
          if (configSection == null) {
              return null;
          }
@@ -89,7 +89,7 @@ Author: Dennis van Dok
       * @throws ConfigurationException thrown if the entity ID property is not set or has an empty value
       */
 -    protected String getEntityId(Section configSection) throws ConfigurationException {
-+    protected String getEntityId(Ini configSection) throws ConfigurationException {
++    protected String getEntityId(Ini.Section configSection) throws ConfigurationException {
          return IniConfigUtil.getString(configSection, ENTITY_ID_PROP);
      }
  
@@ -98,7 +98,7 @@ Author: Dennis van Dok
       * @throws ConfigurationException thrown if no host name is given
       */
 -    protected String getHostname(Section configSection) throws ConfigurationException {
-+    protected String getHostname(Ini configSection) throws ConfigurationException {
++    protected String getHostname(Ini.Section configSection) throws ConfigurationException {
          return IniConfigUtil.getString(configSection, HOST_PROP);
      }
  
@@ -107,7 +107,7 @@ Author: Dennis van Dok
       * @return the value, or 0 if it is not set
       */
 -    protected int getPort(Section configSection) {
-+    protected int getPort(Ini configSection) {
++    protected int getPort(Ini.Section configSection) {
          return IniConfigUtil.getInt(configSection, PORT_PROP, 0, 1, 65535);
      }
  
@@ -116,7 +116,7 @@ Author: Dennis van Dok
       * @return whether SSL should be enabled on the service port, defaults to {@value #DEFAULT_SSL_ON_PROP}.
       */
 -    protected boolean isSSLEnabled(Section configSection) {
-+    protected boolean isSSLEnabled(Ini configSection) {
++    protected boolean isSSLEnabled(Ini.Section configSection) {
          if (configSection == null)
              return DEFAULT_SSL_ON_PROP;
          if (configSection.containsKey(SERVICE_KEY_PROP) && configSection.containsKey(SERVICE_CERT_PROP)
@@ -125,7 +125,7 @@ Author: Dennis van Dok
       *         {@value #DEFAULT_CLIENT_CERT_AUTH}.
       */
 -    protected boolean isClientCertAuthRequired(Section configSection) {
-+    protected boolean isClientCertAuthRequired(Ini configSection) {
++    protected boolean isClientCertAuthRequired(Ini.Section configSection) {
          if (configSection == null)
              return DEFAULT_CLIENT_CERT_AUTH;
          if (isSSLEnabled(configSection)) {
@@ -134,7 +134,7 @@ Author: Dennis van Dok
       * @return the admin host value, or the default admin host {@value #DEFAULT_ADMIN_HOST} if it is not set
       */
 -    protected String getAdminHost(Section configSection) {
-+    protected String getAdminHost(Ini configSection) {
++    protected String getAdminHost(Ini.Section configSection) {
          return IniConfigUtil.getString(configSection, ADMIN_HOST_PROP, DEFAULT_ADMIN_HOST);
      }
  
@@ -143,7 +143,7 @@ Author: Dennis van Dok
       * @return the value, or 0 if is not set
       */
 -    protected int getAdminPort(Section configSection) {
-+    protected int getAdminPort(Ini configSection) {
++    protected int getAdminPort(Ini.Section configSection) {
          return IniConfigUtil.getInt(configSection, ADMIN_PORT_PROP, 0, 1, 65535);
      }
  
@@ -152,7 +152,7 @@ Author: Dennis van Dok
       * @return the value or null if it is not set
       */
 -    protected String getAdminPassword(Section configSection) {
-+    protected String getAdminPassword(Ini configSection) {
++    protected String getAdminPassword(Ini.Section configSection) {
          return IniConfigUtil.getString(configSection, ADMIN_PASSWORD_PROP, null);
      }
  
@@ -161,7 +161,7 @@ Author: Dennis van Dok
       * @return the value
       */
 -    protected int getMaxRequestQueueSize(Section configSection) {
-+    protected int getMaxRequestQueueSize(Ini configSection) {
++    protected int getMaxRequestQueueSize(Ini.Section configSection) {
          return IniConfigUtil.getInt(configSection, REQUEST_QUEUE_PROP, DEFAULT_REQUEST_QUEUE, 1, Integer.MAX_VALUE);
      }
  
@@ -170,7 +170,7 @@ Author: Dennis van Dok
      protected void processServiceSection(Ini iniFile, AbstractServiceConfigurationBuilder<?> configBuilder)
              throws ConfigurationException {
 -        Section configSection = iniFile.get(SERVICE_SECTION_HEADER);
-+        Ini configSection = iniFile.get(SERVICE_SECTION_HEADER);
++        Ini.Section configSection = iniFile.get(SERVICE_SECTION_HEADER);
          if (configSection == null) {
              String errorMsg = "INI configuration does not contain the required '" + SERVICE_SECTION_HEADER
                      + "' INI section";
@@ -179,7 +179,7 @@ Author: Dennis van Dok
      protected void processSecuritySection(Ini iniFile, AbstractServiceConfigurationBuilder<?> configBuilder)
              throws ConfigurationException {
 -        Section securityConfig = iniFile.get(SECURITY_SECTION_HEADER);
-+        Ini securityConfig = iniFile.get(SECURITY_SECTION_HEADER);
++        Ini.Section securityConfig = iniFile.get(SECURITY_SECTION_HEADER);
          if (securityConfig==null) {
              log.warn("INI configuration does not contain the '{}' section", SECURITY_SECTION_HEADER);
          }
@@ -188,7 +188,7 @@ Author: Dennis van Dok
       * @return the constructed SOAP client
       */
 -    protected HttpClientBuilder buildSOAPClientBuilder(Section configSection, X509KeyManager keyManager,
-+    protected HttpClientBuilder buildSOAPClientBuilder(Ini configSection, X509KeyManager keyManager,
++    protected HttpClientBuilder buildSOAPClientBuilder(Ini.Section configSection, X509KeyManager keyManager,
              X509TrustManager trustManager) {
          HttpClientBuilder httpClientBuilder = new HttpClientBuilder();
          httpClientBuilder.setContentCharSet("UTF-8");
@@ -208,7 +208,7 @@ Author: Dennis van Dok
       * @return the value
       */
 -    public static boolean getBoolean(Section configSection, String propName, boolean defaultValue) {
-+    public static boolean getBoolean(Ini configSection, String propName, boolean defaultValue) {
++    public static boolean getBoolean(Ini.Section configSection, String propName, boolean defaultValue) {
          String value = getString(configSection, propName, null);
  
          if ("true".equalsIgnoreCase(value) || "yes".equalsIgnoreCase(value) || "1".equalsIgnoreCase(value)) {
@@ -217,7 +217,7 @@ Author: Dennis van Dok
       *             name
       */
 -    public static boolean getBoolean(Section configSection, String propName) throws ConfigurationException {
-+    public static boolean getBoolean(Ini configSection, String propName) throws ConfigurationException {
++    public static boolean getBoolean(Ini.Section configSection, String propName) throws ConfigurationException {
          String value = getString(configSection, propName, null);
  
          if ("true".equalsIgnoreCase(value) || "yes".equalsIgnoreCase(value) || "1".equalsIgnoreCase(value)) {
@@ -226,7 +226,7 @@ Author: Dennis van Dok
       * @return the value of the property
       */
 -    public static String getString(Section configSection, String propName, String defaultValue) {
-+    public static String getString(Ini configSection, String propName, String defaultValue) {
++    public static String getString(Ini.Section configSection, String propName, String defaultValue) {
          String propValue = Strings.safeTrimOrNullString(configSection.get(propName));
  
          if (propValue == null) {
@@ -235,7 +235,7 @@ Author: Dennis van Dok
       * @throws ConfigurationException thrown if the value does not exist or has a null/empty value
       */
 -    public static String getString(Section configSection, String propName) throws ConfigurationException {
-+    public static String getString(Ini configSection, String propName) throws ConfigurationException {
++    public static String getString(Ini.Section configSection, String propName) throws ConfigurationException {
          String propValue = Strings.safeTrimOrNullString(configSection.get(propName));
  
          if (propValue != null) {
@@ -244,7 +244,7 @@ Author: Dennis van Dok
       * @throws ConfigurationException thrown if there is a problem getting the required integer value
       */
 -    public static int getInt(Section configSection, String propName, int minValue, int maxValue)
-+    public static int getInt(Ini configSection, String propName, int minValue, int maxValue)
++    public static int getInt(Ini.Section configSection, String propName, int minValue, int maxValue)
              throws ConfigurationException {
          if (configSection.containsKey(propName)) {
              try {
@@ -253,7 +253,7 @@ Author: Dennis van Dok
       * @return the value for the property
       */
 -    public static int getInt(Section configSection, String propName, int defaultValue, int minValue, int maxValue) {
-+    public static int getInt(Ini configSection, String propName, int defaultValue, int minValue, int maxValue) {
++    public static int getInt(Ini.Section configSection, String propName, int defaultValue, int minValue, int maxValue) {
          String strValue = Strings.safeTrimOrNullString(configSection.get(propName));
          if (strValue != null) {
              try {
@@ -262,7 +262,7 @@ Author: Dennis van Dok
       * @throws ConfigurationException thrown if the configuration property does not exist.
       */
 -    public static String[] getStringsArray(Section configSection, String propName) throws ConfigurationException {
-+    public static String[] getStringsArray(Ini configSection, String propName) throws ConfigurationException {
++    public static String[] getStringsArray(Ini.Section configSection, String propName) throws ConfigurationException {
          return getStringsArray(configSection, propName, STRING_LIST_SEPARATOR);
      }
  
@@ -271,7 +271,7 @@ Author: Dennis van Dok
       * @return the string values array of the property
       */
 -    public static String[] getStringsArray(Section configSection, String propName, String[] defaultValues) {
-+    public static String[] getStringsArray(Ini configSection, String propName, String[] defaultValues) {
++    public static String[] getStringsArray(Ini.Section configSection, String propName, String[] defaultValues) {
          String[] values = null;
          try {
              values = getStringsArray(configSection, propName, STRING_LIST_SEPARATOR);
@@ -280,7 +280,7 @@ Author: Dennis van Dok
      }
  
 -    private static String[] getStringsArray(Section configSection, String propName, String listSeparator)
-+    private static String[] getStringsArray(Ini configSection, String propName, String listSeparator)
++    private static String[] getStringsArray(Ini.Section configSection, String propName, String listSeparator)
              throws ConfigurationException {
          String propValues = configSection.get(propName);
          if (propValues == null) {
@@ -300,7 +300,7 @@ Author: Dennis van Dok
       *             from the given information
       */
 -    public ObjectType parse(Section iniConfig,
-+    public ObjectType parse(Ini iniConfig,
++    public ObjectType parse(Ini.Section iniConfig,
              AbstractConfigurationBuilder<?> configBuilder)
              throws ConfigurationException;
  }
