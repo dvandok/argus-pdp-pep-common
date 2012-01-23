@@ -21,7 +21,7 @@ Author: Dennis van Dok <dennisvd@nikhef.nl>
              <groupId>org.glite.voms</groupId>
              <artifactId>voms-api-java</artifactId>
 +	    <scope>system</scope>
-+	    <systemPath>/usr/share/java/voms-api-java.jar</systemPath>
++	    <systemPath>/usr/share/java/vomsjapi.jar</systemPath>
          </dependency>
          <!-- Provided Dependencies -->
          <dependency>
@@ -31,7 +31,7 @@ Author: Dennis van Dok <dennisvd@nikhef.nl>
              <artifactId>jcip-annotations</artifactId>
 -            <scope>provided</scope>
 +	    <scope>system</scope>
-+	    <systemPath>/usr/share/java/jcip-annotations.jar</systemPath>
++	    <systemPath>/usr/share/java/jcip.jar</systemPath>
          </dependency>
          <dependency>
              <groupId>ch.qos.logback</groupId>
