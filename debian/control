@@ -16,7 +16,9 @@ Homepage: https://twiki.cern.ch/twiki/bin/view/EGEE/AuthorizationFramework
 
 Package: libpdp-pep-common-java
 Architecture: all
-Depends: ${misc:Depends}, ${maven:Depends}, libini4j-java
+Depends: ${misc:Depends}, ${maven:Depends}, ${java:Depends},
+ libini4j-java, libvomsjapi-java,
+ libjcip-annotations-java
 Recommends: ${maven:OptionalDepends}
 Description: Argus PDP and PEP server common Java library
  ARGUS is a modular XACML based authorization service. It consists of several
