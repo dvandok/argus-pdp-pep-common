@@ -10,7 +10,7 @@ Build-Depends-Indep: libjcip-annotations-java (>= 1.0),
  libxmltooling-java, libslf4j-java, libvomsjapi-java,
  libmaven-javadoc-plugin-java, libini4j-java, libjetty-java,
  libtrustmanager-java, libjcip-annotations-java,
- libvomsjapi-java
+ libvomsjapi-java, argus-parent-maven
 Standards-Version: 3.9.2
 Homepage: https://twiki.cern.ch/twiki/bin/view/EGEE/AuthorizationFramework
 
